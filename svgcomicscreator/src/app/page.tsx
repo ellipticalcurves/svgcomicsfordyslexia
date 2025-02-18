@@ -1,21 +1,29 @@
-import { useState } from "react";
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
 
 export default function Home() {
-  const [svgCode, setSvgCode] = useState("");
+  const [svgInput, setSvgInput] = useState('<rect width="124" height="124" rx="24" fill="#F97316"/>');
 
   return (
-    <div className="min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] grid grid-cols-2 gap-4">
-      <textarea
-        className="border p-2 w-full h-full"
-        placeholder="Enter SVG code here"
-        value={svgCode}
-        onChange={(e) => setSvgCode(e.target.value)}
-      />
-      <div
-        className="border p-2 w-full h-full"
-        dangerouslySetInnerHTML={{ __html: svgCode }}
-      />
+    <div className="min-h-screen p-4 grid grid-cols-2 gap-4">
+      <div>
+        <h2 className="mb-2">SVG Input</h2>
+        <textarea
+          className="w-full h-[500px] p-2 border rounded"
+          value={svgInput}
+          onChange={(e) => setSvgInput(e.target.value)}
+          placeholder="Paste your SVG code here..."
+        />
+      </div>
+      
+      <div>
+        <h2 className="mb-2">Preview</h2>
+        <div 
+          className="w-full h-[500px] border rounded p-2 bg-white"
+          dangerouslySetInnerHTML={{ __html: svgInput }}
+        />
+      </div>
     </div>
   );
 }
