@@ -21,12 +21,18 @@ export function CharacterGallery({ characters, onUpdateCharacter }: CharacterGal
 
   const generateCharacterPrompt = (char: Character) => {
     return `Create an SVG illustration for ${char.name}:
-Character Role: ${char.role}
-Physical Description: ${char.physical_descriptions?.join(', ') || 'None provided'}
-Personality: ${char.personality_traits?.join(', ') || 'None provided'}
+            Character Role: ${char.role}
+            Physical Description: ${char.physical_descriptions?.join(', ') || 'None provided'}
+            Personality: ${char.personality_traits?.join(', ') || 'None provided'}
 
-Please create a simple, comic-style SVG illustration that captures these characteristics.
-Output the complete SVG code.`;
+            Please create a simple, comic-style SVG illustration that captures these characteristics. There must only be the character and no
+            background. There must be no text or bubbles either (unless it's part of the character's design). The SVG should:
+            1. Use basic geometric shapes and paths.
+            2. Reflect the character's key physical features.
+            3. Convey their personality through pose and expression.
+            4. Be suitable for a comic book panel.
+            5. Use appropriate colors that match the character's description.
+            Output the complete SVG code.`;
   };
 
   const copyPrompt = async (char: Character) => {

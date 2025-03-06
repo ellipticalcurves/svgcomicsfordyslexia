@@ -65,12 +65,44 @@ ${characterJson}
 And this story:
 ${bookText}
 
-Break this story into sequential comic panels. For each panel include:
-1. Scene description
-2. Characters present from the provided list
-3. Key actions or dialogue
-4. Suggested layout and composition
-Output as a JSON array.`
+Break this story into sequential comic panels. For each panel:
+1. Identify the key story moment
+2. Create a clear, concise summary of the text that this panel represents
+3. Include the exact portion of the original text that this panel corresponds to
+4. Keep the language simple and direct
+5. Maintain important dialogue that drives the story
+
+Output as a JSON array of panel objects with:
+- id: panel number
+- scene: brief description of setting and atmosphere
+- characters: array of character names present
+- action: what's happening in the panel
+- dialogue: important dialogue (optional)
+- layout: suggested composition
+- textSummary: simplified version of the story text for this panel
+- originalText: the exact portion of the book text that this panel represents
+
+Example format:
+{
+  "panels": [
+    {
+      "id": 1,
+      "scene": "Dark bedroom, early morning",
+      "characters": ["Character Name"],
+      "action": "Character doing something",
+      "dialogue": "Optional dialogue text",
+      "layout": "Layout description",
+      "textSummary": "Clear, simple text explaining this part of the story",
+      "originalText": "Exact text from the book that this panel represents"
+    }
+  ]
+}
+
+Make sure:
+1. Each panel's textSummary is written in clear, simple language
+2. The originalText field contains the exact text from the book
+3. Panels flow naturally and tell a complete story
+4. The text is broken into logical segments that match the visual storytelling`
   }),
   masterTemplate: (bookText, characterJson) => ({
     title: 'Master Comic Generation',
